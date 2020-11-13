@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[124]:
+# In[2]:
 
 
 import os
@@ -13,11 +13,11 @@ import re
 from gensim.models import Word2Vec
 
 
-# In[21]:
+# In[3]:
 
 
 #Read all the files from the directory 
-directory_path = '/Users/safia/Desktop/TextAnalytics/homework/homework2/news/20news-bydate-train/'
+directory_path = 'news/20news-bydate-train/'
 directories = os.listdir(directory_path)
 
 corpus = []
@@ -30,7 +30,7 @@ for d in directories:
             corpus.append(infile.read())
 
 
-# In[75]:
+# In[4]:
 
 
 # Normalize
@@ -42,7 +42,7 @@ for doc in corpus:
     corpus_normalized.append(doc)
 
 
-# In[77]:
+# In[5]:
 
 
 # Tokenize 
@@ -51,7 +51,7 @@ for doc in corpus_normalized:
     corpus_tokenized.append(word_tokenize(doc))
 
 
-# In[117]:
+# In[6]:
 
 
 # Output the preprocessing results as a text file, each line containing a single document
@@ -64,15 +64,17 @@ with open(path, 'w') as outfile:
     outfile.write(preprocessed_docs)
 
 
-# Cbow model (sg=0)
+# ## Cbow model (sg=0)
 
-# In[154]:
+# ### Embedding size = 20 
+
+# In[12]:
 
 
 model_1_cbow = Word2Vec(corpus_tokenized, size= 20, workers=20, window =20, sg = 0)
 
 
-# In[160]:
+# In[25]:
 
 
 model_1_cbow.wv.most_similar(positive = "king")
@@ -126,66 +128,190 @@ model_1_cbow.wv.most_similar(positive = "understand")
 model_1_cbow.wv.most_similar(positive = "the")
 
 
-# Skipgram model (sg = 1) 
+# ### Embedding size = 60 
 
-# In[161]:
-
-
-model_1_sg = Word2Vec(corpus_tokenized, size= 10, workers=10, window =10, sg = 1)
+# In[7]:
 
 
-# In[162]:
+model_2_cbow = Word2Vec(corpus_tokenized, size= 60, workers=20, window =20, sg = 0)
+
+
+# In[8]:
+
+
+model_2_cbow.wv.most_similar(positive = "king")
+
+
+# In[9]:
+
+
+model_2_cbow.wv.most_similar(positive = "woman")
+
+
+# In[10]:
+
+
+model_2_cbow.wv.most_similar(positive = "car")
+
+
+# In[11]:
+
+
+model_2_cbow.wv.most_similar(positive = "money")
+
+
+# In[12]:
+
+
+model_2_cbow.wv.most_similar(positive = "run")
+
+
+# In[13]:
+
+
+model_2_cbow.wv.most_similar(positive = "live")
+
+
+# In[14]:
+
+
+model_2_cbow.wv.most_similar(positive = "drink")
+
+
+# In[15]:
+
+
+model_2_cbow.wv.most_similar(positive = "understand")
+
+
+# In[16]:
+
+
+model_2_cbow.wv.most_similar(positive = "the")
+
+
+# ## Skipgram model (sg = 1) 
+
+# In[17]:
+
+
+model_1_sg = Word2Vec(corpus_tokenized, size= 20, workers=20, window =20, sg = 1)
+
+
+# In[18]:
 
 
 model_1_sg.wv.most_similar(positive = "king")
 
 
-# In[180]:
+# In[19]:
 
 
 model_1_sg.wv.most_similar(positive = "woman")
 
 
-# In[182]:
+# In[20]:
 
 
 model_1_sg.wv.most_similar(positive = "car")
 
 
-# In[185]:
+# In[21]:
 
 
 model_1_sg.wv.most_similar(positive = "money")
 
 
-# In[186]:
+# In[22]:
 
 
 model_1_sg.wv.most_similar(positive = "run")
 
 
-# In[187]:
+# In[23]:
 
 
 model_1_sg.wv.most_similar(positive = "live")
 
 
-# In[188]:
+# In[24]:
 
 
 model_1_sg.wv.most_similar(positive = "drink")
 
 
-# In[194]:
+# In[25]:
 
 
 model_1_sg.wv.most_similar(positive = "understand")
 
 
-# In[196]:
+# In[26]:
 
 
 model_1_sg.wv.most_similar(positive = "the")
+
+
+# ### Embedding size = 60 
+
+# In[27]:
+
+
+model_2_sg = Word2Vec(corpus_tokenized, size= 60, workers=20, window =20, sg = 1)
+
+
+# In[28]:
+
+
+model_2_sg.wv.most_similar(positive = "king")
+
+
+# In[29]:
+
+
+model_2_sg.wv.most_similar(positive = "woman")
+
+
+# In[30]:
+
+
+model_2_sg.wv.most_similar(positive = "car")
+
+
+# In[31]:
+
+
+model_2_sg.wv.most_similar(positive = "money")
+
+
+# In[32]:
+
+
+model_2_sg.wv.most_similar(positive = "run")
+
+
+# In[33]:
+
+
+model_2_sg.wv.most_similar(positive = "live")
+
+
+# In[34]:
+
+
+model_2_sg.wv.most_similar(positive = "drink")
+
+
+# In[35]:
+
+
+model_2_sg.wv.most_similar(positive = "understand")
+
+
+# In[36]:
+
+
+model_2_sg.wv.most_similar(positive = "the")
 
 
 # In[ ]:

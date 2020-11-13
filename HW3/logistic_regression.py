@@ -75,7 +75,7 @@ def process_line_unigram_bigram(line):
 # In[ ]:
 
 
-def all_processing(uni, tokens_to_keep)
+def all_processing(uni, tokens_to_keep):
     # use multiprocessing to more efficiently process the text 
     pool = multiprocessing.Pool(multiprocessing.cpu_count())
     if uni == True: 

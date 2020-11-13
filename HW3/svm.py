@@ -100,7 +100,7 @@ def all_processing(uni, tokens_to_keep):
 # In[ ]:
 
 
-all_processing(uni, 50000)
+all_processing(True, 50000):
 X,y = sklearn.datasets.load_svmlight_file("review.liblinear")
 svc = sklearn.svm.LinearSVC(C=2)
 svc.fit(X,y)
